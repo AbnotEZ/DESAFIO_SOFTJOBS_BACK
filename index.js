@@ -46,7 +46,10 @@ console.log(email);
   try {
     const users = await getUsers(email);
     res.send(users);
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+		res.status(error.code || 500).send(error);
+  }
 });
 
 app.listen(PORT, () => {
